@@ -110,7 +110,7 @@
                             </div>
 
                             <div class="mb-4">
-                                <form class="form-default" role="form" action="#" method="POST"
+                                <form class="form-default" enctype="mu" role="form" action="#" method="POST"
                                     accept="{{ url('/') }}">
                                     @csrf
                                     {{-- <input type="hidden" name="_token" value="ziZ87jaEgJCCC6dhE31C14pskHzFfmCdglmsiOW9">

@@ -3,6 +3,7 @@
 
 <head>
     @include('admin.inc.head')
+    <link rel="stylesheet" href="{{asset('assets/css/admin-profile.css')}}">
 </head>
 
 <body>
@@ -10,7 +11,7 @@
     <div id="app">
         @include('admin.layouts.sidebar')
 
-        @yield('content')
+        @yield('profile-content')
     </div>
 
 
@@ -20,7 +21,5 @@
     <script src="{{asset('assets/vendors/apexcharts/apexcharts.js')}}"></script>
     <script src="{{asset('assets/js/pages/dashboard.js')}}"></script>
 
-
-    
 </body>
 </html>

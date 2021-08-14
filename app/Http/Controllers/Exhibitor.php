@@ -8,12 +8,11 @@
 // class Exhibitor extends Controller
 // {
 //   public function index(){
-//       return View('index');
+//       return view('user.content.index');
 //   }
 
-
-//   public function register(Request $request){
-
+//   public function exhibitor(Request $request){
+// dd("ghjhgjgh");
 //     $request->validate([
 //         'bookTitle'=>'required',
 //         'authorName'=>'required',
@@ -27,9 +26,8 @@
 //         'publisherName'=>'required',
 //         'typeOfBook'=>'required',
 //         'coverPhoto'=>'required',
-//         'copyOfBook'=>'required',
+//         'copyOfBook'=>'required|mimes:application/pdf, application/x-pdf,application/acrobat,application/msword,doc,docx, applications/vnd.pdf, text/pdf, text/x-pdf|max:10000',
 //     ]);
-//     echo "<pre>";
-//     print_r($request->all());
+
 //   }
 // }

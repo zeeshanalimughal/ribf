@@ -1,0 +1,68 @@
+
+.container {
+    background-color: white;
+    text-align: center;
+    border-radius: 20px;
+    /* box-shadow: 0 10px 20px rgba(0, 0, 0, .2); */
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-title {
+    font-size: 30px !important;
+    font-weight: bold;
+}
+.text-muted {
+    font-size: 18px !important;
+    font-weight: normal !important;
+}
+
+.icon {
+    position: relative;
+    bottom: 11px
+}
+
+.mt-100 {
+    margin-top: 100px
+}
+
+.profile img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%
+}
+
+.card {
+    border-radius: 15px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+    max-width: 850px;
+
+}
+
+.card-body {
+    position: relative;
+    bottom: 35px
+}
+
+.ft .btn {
+    margin-top: 10px;
+    margin-bottom:30px;
+    background-color: #AB47BC;
+    border: none;
+    color: #fff;
+    font-size: 22px;
+    padding: 10px 30px;
+}
+
+.btn:hover {
+    -webkit-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    transform: scale(1.05);
+    color: #fff
+}
+
+.header {
+    padding-top: 40px
+}

@@ -51,8 +51,14 @@
 
                                          <td><a href="{{url('/admin/edit')}}/{{$exhibitor->id}}"><button class="btn btn-success btn-block">Edit</button></a></td>
 
-                                        <td><a href="#"><button class="btn btn-primary btn-block">Activate</button></a></td>
-                                        <td><a href="#"><button class="btn btn-warning btn-block">Delete</button></a></td>
+
+                                        <td><a href="{{url('/admin/status')}}/{{$exhibitor->id}}"><button class="{{$exhibitor->status == 0 ? "btn btn-primary btn-block" : "btn btn-secondary btn-block"}}">
+
+                                          {{$exhibitor->status == 0 ? "Active" : "Deactive"}}
+                                        </button></a></td>
+
+
+                                        <td><a href="{{url('/admin/delete')}}/{{$exhibitor->id}}"><button class="btn btn-warning btn-block">Delete</button></a></td>
                                     </tr>
                                     @endforeach
                                 </tbody>

@@ -52,13 +52,13 @@
                 </li>
 
 
-{{-- 
+
                 <li class="sidebar-item  ">
                     <a href="{{url('/admin/profile')}}" class='sidebar-link'>
                         <i class="bi bi-puzzle"></i>
                         <span>Profile</span>
                     </a>
-                </li> --}}
+                </li>
 
                 <li class="sidebar-item  ">
                     <a href="{{url('/')}}" class='sidebar-link'>
