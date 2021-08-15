@@ -12,6 +12,13 @@ use Illuminate\Support\Facades\Storage;
 class AdminController extends Controller
 {
 
+function detailsBook($id){
+    $book = Books::find($id);
+    $data = compact('book');
+    return view('admin.details-book')->with($data);
+}
+
+
 function adminLogin(Request $request)
 {
  $request->validate([
@@ -88,6 +95,9 @@ public function updateAdminPassword(Request $request){
     $user->save();
     return redirect('/admin/profile');
 }
+
+
+
 
     public function adminProfile(Request $request){
         $request->session()->put('admin', 'admin@gmail.com');

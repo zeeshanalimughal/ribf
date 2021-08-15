@@ -3,7 +3,7 @@
         <div class="sidebar-header">
             <div class="d-flex justify-content-between">
                 <div class="logo">
-                    <a href="index.html"><img src="{{asset('assets/images/logo/logo.png')}}" alt="Logo" srcset=""></a>
+                    <a href="{{url('/admin/dashboard')}}"><img src="{{asset('/images/logo.svg')}}" alt="Logo" srcset=""></a>
                 </div>
                 <div class="toggler">
                     <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
@@ -95,7 +95,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item dropdown me-1">
+                        {{-- <li class="nav-item dropdown me-1">
                             <a class="nav-link active dropdown-toggle" href="#" data-bs-toggle="dropdown"
                                 aria-expanded="false">
                                 <i class='bi bi-envelope bi-sub fs-4 text-gray-600'></i>
@@ -118,13 +118,13 @@
                                 </li>
                                 <li><a class="dropdown-item">No notification available</a></li>
                             </ul>
-                        </li>
+                        </li> --}}
                     </ul>
                     <div class="dropdown">
                         <a href="#" data-bs-toggle="dropdown" aria-expanded="false">
                             <div class="user-menu d-flex">
                                 <div class="user-name text-end me-3">
-                                    <h6 class="mb-0 text-gray-600">John Ducky</h6>
+                                    <h6 class="mb-0 text-gray-600">Admin</h6>
                                     <p class="mb-0 text-sm text-gray-600">Administrator</p>
                                 </div>
                                 <div class="user-img d-flex align-items-center">

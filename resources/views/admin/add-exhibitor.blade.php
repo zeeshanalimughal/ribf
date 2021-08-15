@@ -66,6 +66,12 @@
                 @endif
 
                 <div class="card-content">
+                    @if (session()->has('message'))
+                    <div class="alert alert-success text-center" role="alert">
+                        <strong>{{ session()->get("message")
+                        }}{{session()->forget('message')}}</strong>
+                    </div>
+                    @endif
                     <div class="card-body">
                         <form method="POST" action="{{url('/admin/addExhibitors')}}" class="form form-vertical">
                             @csrf

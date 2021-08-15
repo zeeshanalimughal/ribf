@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Jobs\SendMailToExibitors;
+use App\Models\Books;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Notification;
 use App\Notifications\ExhibiratorRegisteredNotification;
+use Illuminate\Validation\Rules\Password;
+
 class RegisterUser extends Controller
 {
     /**
@@ -29,23 +32,32 @@ class RegisterUser extends Controller
         $request->validate([
             "name" => "required",
             "email" => "required|email",
-            "password" => "required",
+            'password' => ['required', Password::min(8)
+        ->letters()
+        ->mixedCase()
+        ->numbers()
+        ->symbols()
+        ->uncompromised()],
+        'cpassword' => 'required|same:password'
         ]);
         $user  = new User;
         $user->name = $request['name'];
         $user->email = $request['email'];
         $password = $request['password'];
         $user->password = md5($request['password']);
+
         $user->save();
 
 $request->session()->put("exhibitorEmail",$request->email);
 $request->session()->put("exhibitorPassword",$password);
 
-        // Notification::send($user, new ExhibiratorRegisteredNotification($user));
-        SendMailToExibitors::dispatchAfterResponse($user);
+        Notification::send($user, new ExhibiratorRegisteredNotification($user));
+        // SendMailToExibitors::dispatchAfterResponse($user);
 
         // return redirect()->route('sendEmail');
-       
+
+        $request->session()->put("message","Exhibitor Account Created Successfuly");
+
             return back();
     }
 
@@ -154,6 +166,28 @@ $request->session()->put("exhibitorPassword",$password);
             }
         } else {
             return redirect('/admin/exhibitors');
+        }
+    }
+
+    public function bookStatus($id){
+        $book =  Books::find($id);
+        if (!is_null($book)) {
+            $allData =  $book->toArray();
+        $status = $allData['status'];
+            if($status==0){
+                $book->status = 1;
+                $book->save();
+                return redirect('admin/allBooks');
+            }else
+            if($status==1){
+                $book->status =0;
+                $book->save();
+                return redirect('admin/allBooks');
+            }else{
+            return redirect('admin/allBooks');
+            }
+        } else {
+            return redirect('admin/allBooks');
         }
     }
 }

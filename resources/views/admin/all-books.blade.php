@@ -40,7 +40,7 @@
                                     <th>SelePrice</th>
                                     <th>Cover</th>
                                     <th>BookType</th>
-                                    <th>Update</th>
+                                    <th>View</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
@@ -54,9 +54,13 @@
                                         <td>{{ $book->authorName }}</td>
                                         <td>{{ $book->price }}</td>
                                         <td>{{ $book->sellingPrice }}</td>
-                                        <td>{{ $book->coverPhoto }}</td>
+                                        <td><img class="" style="width: 80px;"  src="{{ asset('/uploads')}}/{{$book->coverPhoto}}" alt=""></td>
                                         <td>{{ $book->typeOfBook }}</td>
-                                        <td><a href="#"><button class="btn btn-primary btn-block">Edit</button></a></td>
+
+
+
+                                        <td><a href="{{ url('/admin/detailsBook') }}/{{ $book->bookId }}"><button
+                                                    class="btn btn-primary btn-block">Details</button></a></td>
 
                                         <td><a href="{{ url('/admin/bookStatus') }}/{{ $book->bookId }}"><button
                                                     class="{{ $book->status == 0 ? 'btn btn-secondary btn-block' : 'btn btn-primary btn-block' }}">

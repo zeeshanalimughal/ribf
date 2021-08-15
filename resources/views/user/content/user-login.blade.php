@@ -43,7 +43,7 @@
 
                                         <div class="row">
 
-                                            <div class="col-xxl-12 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                            <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                 <div class="form-group">
                                                     <div class="input-group input-group--style-1">
                                                         <input value="{{old('email')}}" name="email" type="email" class="form-control" value="" placeholder="Enter your Email" id="email" >

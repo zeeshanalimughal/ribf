@@ -33,6 +33,12 @@
                                     <form class="form-default" accept="{{ url('/') }}" method="post" enctype="multipart/form-data">
                                         @csrf
                                         <div class="row">
+                                            @if (session()->has('message'))
+                                            <div class="alert alert-success text-center" role="alert">
+                                                <strong>{{ session()->get("message")
+                                                }}{{session()->forget('message')}}</strong>
+                                            </div>
+                                            @endif
                                             <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                 <div class="form-group">
                                                     <div class="input-group input-group--style-1">
@@ -43,6 +49,7 @@
                                                             {{ $message }}
                                                         @enderror
                                                     </span>
+
                                                 </div>
 
                                                 <div class="form-group">

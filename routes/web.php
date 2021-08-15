@@ -9,6 +9,7 @@ use App\Http\Controllers\BulkEmailController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RegisterUser;
 use App\Http\Controllers\Users;
+use App\Models\User;
 // use App\Models\User;
 
 /*
@@ -55,6 +56,16 @@ Route::post('/admin', [AdminController::class, 'adminLogin']);
 
 
 Route::group(['middleware' => ['AdminAuth']], function () {
+
+    // Route::get('/admin/dasboard', function () {
+    //     $value = session('admin');
+    //     $user =User::all()->where('email', $value)->first();
+    //     $data = compact('user');
+    //     return view('admin.layouts.sidebar')->with($data);
+    // });
+
+
+
     Route::get('/logout', [AdminController::class, 'logoutAdmin']);
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard']);
     Route::get('/admin/allBooks', [AdminController::class, 'allBooks'])->name('admin.allBooks');
@@ -81,7 +92,11 @@ Route::group(['middleware' => ['AdminAuth']], function () {
 
     Route::get('/admin/edit/{id}', [RegisterUser::class, 'edit']);
     Route::get('/admin/delete/{id}', [RegisterUser::class, 'destroy']);
+
     Route::get('/admin/deleteBook/{id}', [AdminController::class, 'deleteBook']);
+
+
+    Route::get('/admin/detailsBook/{id}', [AdminController::class, 'detailsBook']);
 
     Route::post('/admin/updateExhibitor', [RegisterUser::class, 'update'])->name('admin.updateExhibitor');
     Route::get('/admin/status/{id}', [RegisterUser::class, 'status'])->name('admin.updateExhibitor');

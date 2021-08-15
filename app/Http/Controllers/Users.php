@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Books;
 use App\Models\User;
-use Illuminate\Support\Facades\File as FacadesFile;
-use Illuminate\Validation\Rules\Password;
+use App\Notifications\SendBookDetailsNotification;
+use Notification;
 
 class Users extends Controller
 {
@@ -40,13 +40,6 @@ public function loginExhibitor(Request $request)
    }
 
 }
-
-
-
-
-
-
-
       public function index(){
       return view('user.content.index');
   }
@@ -99,7 +92,10 @@ $book->copyOfBook =$bookFileName;
 $book->publisherName = $request->input(trim('publisherName'));
 $book->typeOfBook = $request->input(trim('typeOfBook'));
 
+
+$request->session()->put("message","Thank you for submitting your information. Our representative will be in touch with you very soon");
+
 $book->save();
-return redirect('/');
+return redirect('/user');
   }
 }
