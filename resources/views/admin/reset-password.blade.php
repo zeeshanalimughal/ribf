@@ -30,6 +30,25 @@
 
         <div class="col-md-12 col-12">
             <div class="card">
+                @if (count($errors) > 0)
+
+                <div class="alert alert-danger">
+
+                    <strong>Whoops!</strong> There were some problems with your input.
+
+                    <ul>
+
+                        @foreach ($errors->all() as $error)
+
+                            <li>{{ $error }}</li>
+
+                        @endforeach
+
+                    </ul>
+
+                </div>
+
+            @endif
                 <div class="card-content">
                     <div class="card-body">
                         <form method="POST" action="{{ url('/admin/updateAdminPassword') }}" class="form form-vertical">
@@ -47,11 +66,19 @@
                                                     <i class="bi bi-lock"></i>
                                                 </div>
                                             </div>
-                                            <span class="text-danger">
-                                                @error('password')
-                                                    {{ $message }}
-                                                @enderror
-                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group has-icon-left">
+                                            <label for="password-id-icon">Confirm new Password</label>
+                                            <div class="position-relative">
+                                                <input type="password" name="cpassword" class="form-control"
+                                                    placeholder="Confirm new Password" id="password-id-icon">
+                                                <div class="form-control-icon">
+                                                    <i class="bi bi-lock"></i>
+                                                </div>
+                                            </div>
+
                                         </div>
                                     </div>
 

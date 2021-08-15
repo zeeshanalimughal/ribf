@@ -54,6 +54,14 @@
 
 
                 <li class="sidebar-item  ">
+                    <a href="{{url('/admin/bulkEmail')}}" class='sidebar-link'>
+                        <i class="bi bi-envelope-fill"></i>
+                        <span>Bulk Email</span>
+                    </a>
+                </li>
+
+
+                <li class="sidebar-item  ">
                     <a href="{{url('/admin/profile')}}" class='sidebar-link'>
                         <i class="bi bi-puzzle"></i>
                         <span>Profile</span>
@@ -61,7 +69,7 @@
                 </li>
 
                 <li class="sidebar-item  ">
-                    <a href="{{url('/')}}" class='sidebar-link'>
+                    <a href="{{url('/logout')}}" class='sidebar-link'>
                         <i class="bi bi-cash"></i>
                         <span>Logout</span>
                     </a>

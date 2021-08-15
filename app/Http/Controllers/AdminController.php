@@ -6,17 +6,39 @@ use Illuminate\Http\Request;
 use App\Models\Books;
 use App\Models\User;
 use Illuminate\Support\Facades\File as FacadesFile;
+use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Facades\Storage;
-use Symfony\Component\HttpFoundation\File\File;
 
 class AdminController extends Controller
 {
 
+function adminLogin(Request $request)
+{
+ $request->validate([
+    'email'=>'required|email',
+    'password'=>'required',
+ ]);
+
+    $user = User::all()
+    ->where("email",trim($request->input('email')))
+    ->where("password",trim(md5($request->input('password'))))
+    ->toArray();
+   if(sizeof($user)>0){
+       $request->session()->put("admin",trim($request->input('email')));
+       return redirect('/admin/dashboard');
+   }else{
+    $request->session()->put("error","Access Denied / Account dose not exists");
+    return redirect('/admin');
+   }
+}
+
+public function login(){
+    return view('admin.auth-login');
+}
+
     public function dashboard(){
         return view('admin.index');
     }
-
-
 
 public function updatePic($id){
     $user = User::find($id);
@@ -31,10 +53,11 @@ function updateAdminPicture(Request $request){
         'file' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
     ]);
     $user = User::find($request['id']);
+
     $imageName = time().'.'.$request->file->extension();
     $request->file->move(public_path('uploads'), $imageName);
-
     FacadesFile::delete(''.public_path('uploads').'/'.$user->profile_pic);
+
     $user->profile_pic =$imageName;
     $user->save();
 
@@ -50,6 +73,16 @@ public function resetPassword($id){
 
 
 public function updateAdminPassword(Request $request){
+    $request->validate([
+        'password' => ['required', Password::min(8)
+        ->letters()
+        ->mixedCase()
+        ->numbers()
+        ->symbols()
+        ->uncompromised()],
+        'cpassword' => 'required|same:password'
+    ]);
+
     $user = User::find($request['id']);
     $user->password=md5($request['password']);
     $user->save();
@@ -128,12 +161,8 @@ public function updateAdminProfile(Request $request){
     public function addExhibitors(){
         return view('admin.add-exhibitor');
     }
-    public function login(){
-        return view('admin.auth-login');
+    public function logoutAdmin(){
+        session()->forget('admin');
+        return redirect('/admin');
     }
-    // public function store(Request $request){
-    //     echo "<pre>";
-
-    //     print_r($request->all());
-    // }
 }

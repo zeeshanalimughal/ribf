@@ -34,11 +34,18 @@ class RegisterUser extends Controller
         $user  = new User;
         $user->name = $request['name'];
         $user->email = $request['email'];
+        $password = $request['password'];
         $user->password = md5($request['password']);
         $user->save();
-        // Notification::send($user, new ExhibiratorRegisteredNotification($request['email']));
+
+$request->session()->put("exhibitorEmail",$request->email);
+$request->session()->put("exhibitorPassword",$password);
+
+        // Notification::send($user, new ExhibiratorRegisteredNotification($user));
         SendMailToExibitors::dispatchAfterResponse($user);
+
         // return redirect()->route('sendEmail');
+       
             return back();
     }
 

@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Jobs\SendMailToExibitors;
 use Illuminate\Http\Request;
 use App\Models\User;
-
+use App\Notifications\ExhibiratorRegisteredNotification;
+use Notification;
 class HomeController extends Controller
 {
     /**
@@ -24,6 +24,12 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
 
+function bulkEmail(){
+
+    return view('admin.bulkEmail');
+}
+
+
      function template(){
          return view('index');
      }
@@ -34,14 +40,10 @@ class HomeController extends Controller
         $details = [
             "greeting"=>"Hello from virturnetz",
             "body"=>"Thank you for joining us",
-            "actionText"=>"Please complete your registration process",
-            "actionUrl"=>"/",
-            "lastWords"=>"Thank you for subscribing us",
            ];
+           Notification::send($users, new ExhibiratorRegisteredNotification($details));
 
-           Notification::send($this->users, new ExhibiratorRegisteredNotification($details));
-        
-        return redirect('/admin/addExhibitors');
+        return redirect('/admin/dashboard');
 
     }
 }

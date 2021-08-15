@@ -36,7 +36,6 @@ class SendMailToExibitors implements ShouldQueue
     public function handle()
     {
         //
-
         $this->user->notify(new ExhibiratorRegisteredNotification($this->user->email));
     }
 }

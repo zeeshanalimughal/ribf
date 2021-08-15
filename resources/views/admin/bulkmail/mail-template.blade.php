@@ -399,16 +399,6 @@
 																							</p>
 																						</td>
 																					</tr>
-                                                                                    <tr >
-                                                                                    <td style="text-align: left !important; font-size: 25px; margin: 1rem 0;">Login Credientials</td></tr>
-                                                                                    <tr>
-                                                                                        <td>{{session("exhibitorEmail")}}</td>
-                                                                                        <td>Email</td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td>{{session("exhibitorPassword")}}</td>
-                                                                                        <td>Password</td>
-                                                                                    </tr>
 																					<tr>
 																						<td colspan="2" align="center">
 																							<span>

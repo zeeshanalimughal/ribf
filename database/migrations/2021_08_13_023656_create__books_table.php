@@ -24,7 +24,7 @@ class CreateBooksTable extends Migration
             $table->string('price',191);
             $table->string('sellingPrice',191);
             $table->string('noOfCopies',191);
-            $table->date('issueDate');
+            $table->string('issueDate',50);
             $table->string('coverPhoto',191);
             $table->string('copyOfBook',191);
             $table->string('publisherName',191);

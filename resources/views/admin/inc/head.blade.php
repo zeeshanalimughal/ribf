@@ -15,3 +15,5 @@
 <link rel="shortcut icon" href="{{ asset('assets/images/favicon.svg" type="image/x-icon') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/pages/auth.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/vendors/toastify/toastify.css')}}">
+
+

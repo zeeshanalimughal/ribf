@@ -4,9 +4,7 @@
 
 <!-- MAIN WRAPPER -->
 <div class="body-wrap gry-bg">
-
     <!-- Header -->
-
         <section class="auth-profile">
             <div class="profile-inner">
                 <div class="row">
@@ -18,7 +16,7 @@
 
                             <div class="col-md-2 lang"> <a href="#">العربية</a> </div>
 
-                            <div class="col-md-2 lang login"><a href="#">Login/Register</a></div>
+                            <div class="col-md-2 lang login"><a href="{{url('/logoutUser')}}">Logout</a></div>
 
                             </div>
 
@@ -32,7 +30,7 @@
                             </div>
 
                             <div class="mb-4">
-                                    <form class="form-default" accept="{{ url('/') }}" method="post">
+                                    <form class="form-default" accept="{{ url('/') }}" method="post" enctype="multipart/form-data">
                                         @csrf
                                         <div class="row">
                                             <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -398,11 +396,11 @@
                                               <div class="form-group coverPhoto">
                                                 <div class="label">Cover Photo</div>
                                                 <div class="custom-file">
-                                                  <input value="{{old('bookTitle')}}" type="file" class="custom-file-input" id="customFile" name="coverPhoto">
+                                                  <input value="{{old('bookTitle')}}" type="file" class="custom-file-input" id="customFile" name="file">
                                                   <label class="custom-file-label" for="customFile">attachment</label>
                                                 </div>
                                                 <span class="text-danger small">
-                                                    @error('coverPhoto')
+                                                    @error('file')
                                                         {{ $message }}
                                                     @enderror
                                                 </span>

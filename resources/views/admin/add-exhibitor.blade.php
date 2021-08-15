@@ -13,6 +13,7 @@
                 <div class="page-title">
                     <div class="row">
                         <div class="col-12 col-md-6 order-md-1 order-last">
+                            {{ session()->forget(['exhibitorEmail', 'exhibitorPassword']);}}
                             <h3>Add New Exhibitor</h3>
 
                         </div>
@@ -29,6 +30,41 @@
         </div>
         <div class="col-md-12 col-12">
             <div class="card">
+
+                @if ($message = Session::get('success'))
+
+                <div class="alert alert-success alert-block">
+
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+
+                        <strong>{{ $message }}</strong>
+
+                </div>
+
+                <img src="images/{{ Session::get('image') }}">
+
+                @endif
+
+                @if (count($errors) > 0)
+
+                    <div class="alert alert-danger">
+
+                        <strong>Whoops!</strong> There were some problems with your input.
+
+                        <ul>
+
+                            @foreach ($errors->all() as $error)
+
+                                <li>{{ $error }}</li>
+
+                            @endforeach
+
+                        </ul>
+
+                    </div>
+
+                @endif
+
                 <div class="card-content">
                     <div class="card-body">
                         <form method="POST" action="{{url('/admin/addExhibitors')}}" class="form form-vertical">
@@ -46,11 +82,7 @@
                                                     <i class="bi bi-person"></i>
                                                 </div>
                                             </div>
-                                            <span class="text-danger">
-                                                @error('name')
-                                                {{$message}}
-                                                @enderror
-                                            </span>
+
                                         </div>
                                     </div>
                                     <div class="col-12">
@@ -64,11 +96,7 @@
                                                     <i class="bi bi-envelope"></i>
                                                 </div>
                                             </div>
-                                            <span class="text-danger">
-                                                @error('email')
-                                              {{$message}}
-                                                @enderror
-                                            </span>
+
                                         </div>
                                     </div>
                                     <div class="col-12">
@@ -81,20 +109,20 @@
                                                     <i class="bi bi-lock"></i>
                                                 </div>
                                             </div>
-                                            <span class="text-danger">
-                                                @error('password')
-                                              {{$message}}
-                                                @enderror
-                                            </span>
+
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <div class='form-check'>
-                                            <div class="checkbox mt-2">
-                                                <input type="checkbox" id="remember-me-v"
-                                                    class='form-check-input' checked>
-                                                <label for="remember-me-v">Remember Me</label>
+                                        <div class="form-group has-icon-left">
+                                            <label for="password-id-icon">Confirm Password</label>
+                                            <div class="position-relative">
+                                                <input type="password" name="cpassword" class="form-control"
+                                                    placeholder="Confirm Password" id="password-id-icon">
+                                                <div class="form-control-icon">
+                                                    <i class="bi bi-lock"></i>
+                                                </div>
                                             </div>
+
                                         </div>
                                     </div>
                                     <div class="col-12 d-flex justify-content-end">

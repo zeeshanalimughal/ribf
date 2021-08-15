@@ -33,7 +33,7 @@
                             <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>ExhibitorId</th>
+                                    <th>ExhibitorEmail</th>
                                     <th>Title</th>
                                     <th>Author</th>
                                     <th>Price</th>
@@ -49,7 +49,7 @@
                                 @foreach ($books as $book)
                                     <tr>
                                         <td>{{ $book->bookId }}</td>
-                                        <td>{{ $book->exhibitorId }}</td>
+                                        <td>{{ $book->exhibitorEmail }}</td>
                                         <td>{{ $book->bookTitle }}</td>
                                         <td>{{ $book->authorName }}</td>
                                         <td>{{ $book->price }}</td>
@@ -57,9 +57,6 @@
                                         <td>{{ $book->coverPhoto }}</td>
                                         <td>{{ $book->typeOfBook }}</td>
                                         <td><a href="#"><button class="btn btn-primary btn-block">Edit</button></a></td>
-
-
-
 
                                         <td><a href="{{ url('/admin/bookStatus') }}/{{ $book->bookId }}"><button
                                                     class="{{ $book->status == 0 ? 'btn btn-secondary btn-block' : 'btn btn-primary btn-block' }}">

@@ -52,10 +52,7 @@
                                 </ul>
 
                             </div>
-
                         @endif
-
-
 
                         <form method="POST" action="{{ url('/admin/updateAdminPicture')}}" enctype="multipart/form-data" class="form form-vertical">
                             @csrf
